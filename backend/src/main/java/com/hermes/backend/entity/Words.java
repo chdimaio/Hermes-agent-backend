@@ -21,6 +21,6 @@ public class Words {
 
     private String definition;
 
-    private String translation_es;
+    private String translationEs;
 
 }
