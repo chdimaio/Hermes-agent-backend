@@ -5,7 +5,6 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import com.hermes.backend.dto.WordCardResponse;
-import com.hermes.backend.entity.Words;
 import com.hermes.backend.entity.Synonyms;
 import com.hermes.backend.repository.WordsRepository;
 import com.hermes.backend.repository.SynonymsRepository;
