@@ -62,8 +62,7 @@ public class DatabaseSeeder implements ApplicationRunner {
                 new ClassPathResource("seed/words.csv").getInputStream(),
                 StandardCharsets.UTF_8)) {
 
-            // IMPORTANT: your header is:
-            // lemma,definition,translationEs
+            
             CSVParser csvParser = CSVFormat.DEFAULT.builder()
                     .setHeader() // read the header row from the file
                     .setSkipHeaderRecord(true)
