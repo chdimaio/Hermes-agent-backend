@@ -50,7 +50,7 @@ public class DatabaseSeeder implements ApplicationRunner {
 
     private String normalizeLemma(String s) {
         if (s == null) return null;
-        // Trim + collapse whitespace + lowercase
+        
         String normalized = s.trim().replaceAll("\\s+", " ");
         return normalized.toLowerCase(Locale.ROOT);
     }
@@ -64,12 +64,12 @@ public class DatabaseSeeder implements ApplicationRunner {
 
             
             CSVParser csvParser = CSVFormat.DEFAULT.builder()
-                    .setHeader() // read the header row from the file
+                    .setHeader()
                     .setSkipHeaderRecord(true)
                     .build()
                     .parse(reader);
 
-            int rowNum = 1; // best-effort (includes header)
+            int rowNum = 1; 
             for (CSVRecord r : csvParser) {
                 rowNum++;
 
@@ -87,7 +87,7 @@ public class DatabaseSeeder implements ApplicationRunner {
                 }
 
                 Words wordEntity = new Words();
-                wordEntity.setLemma(lemma); // keep original for display
+                wordEntity.setLemma(lemma);
                 wordEntity.setDefinition(definition);
                 wordEntity.setTranslationEs(translationEs);
 
@@ -127,15 +127,14 @@ public class DatabaseSeeder implements ApplicationRunner {
                 new ClassPathResource("seed/synonyms.csv").getInputStream(),
                 StandardCharsets.UTF_8)) {
 
-            // Your header is:
-            // synonym,source
+            
             CSVParser csvParser = CSVFormat.DEFAULT.builder()
-                    .setHeader() // read header row from file
+                    .setHeader()
                     .setSkipHeaderRecord(true)
                     .build()
                     .parse(reader);
 
-            int rowNum = 1; // best-effort (includes header)
+            int rowNum = 1; 
             for (CSVRecord r : csvParser) {
                 rowNum++;
 
@@ -162,8 +161,6 @@ public class DatabaseSeeder implements ApplicationRunner {
                     continue;
                 }
 
-                // Now split the synonym field into individual lemmas.
-                // Because CSV parsing already respected quotes, this split is only over the synonym *list* field.
                 String[] synonymLemmasRaw = synonymFieldRaw.trim().split("\\s*,\\s*");
 
                 for (String synonymLemmaRaw : synonymLemmasRaw) {
@@ -193,7 +190,6 @@ public class DatabaseSeeder implements ApplicationRunner {
 
                     SynonymId linkId = new SynonymId(sourceId, synonymId);
 
-                    // De-dup to avoid duplicate PK insert attempts
                     if (seenLinks.add(linkId)) {
                         Synonyms link = new Synonyms();
                         link.setId(linkId);
