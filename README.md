@@ -1,3 +1,6 @@
+# Hermes — About
+Full-stack development project carried out during my FemCoders Factoría F5 bootcamp. This project consists of an “intelligent dictionary” that helps users understand English words and expressions (focusing on definitions and synonyms) and translate them into Spanish. The Front-end repo can be found here: https://github.com/chdimaio/Hermes-agent-frontend
+
 # Hermes — Backend
 
 A Spring Boot API that serves word definitions, Spanish translations, and synonyms for the Hermes bilingual dictionary chatbot.
